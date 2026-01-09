@@ -3,7 +3,7 @@ const path = require("path");
 const StepFunctionsAPI = require("./backend/StepFunctionsAPI");
 const APIType = require("./util/APIType");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3001;
 
 app.use(express.json());
 

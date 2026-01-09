@@ -1,0 +1,225 @@
+/* Connection Status Container */
+.connection-status-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Status Indicator */
+.status-indicator {
+  font-size: 12px;
+  animation: none;
+}
+
+.status-connected .status-indicator {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.status-disconnected .status-indicator {
+  color: #ff4757;
+  text-shadow: 0 0 10px #ff4757;
+}
+
+.status-checking .status-indicator {
+  color: #ffa502;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Status Text */
+.status-text {
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-connected .status-text {
+  color: #00ff88;
+}
+
+.status-disconnected .status-text {
+  color: #ff4757;
+}
+
+.status-checking .status-text {
+  color: #ffa502;
+}
+
+/* Endpoint Display */
+.endpoint-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.endpoint-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.endpoint-value {
+  color: #74b9ff;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 12px;
+  background: rgba(116, 185, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Buttons */
+.btn-edit,
+.btn-refresh,
+.btn-save,
+.btn-cancel {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-edit:hover,
+.btn-refresh:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-save {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+.btn-save:hover {
+  background: rgba(0, 255, 136, 0.3);
+}
+
+.btn-cancel {
+  background: rgba(255, 71, 87, 0.2);
+  border-color: #ff4757;
+  color: #ff4757;
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 71, 87, 0.3);
+}
+
+.btn-refresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Endpoint Edit */
+.endpoint-edit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.endpoint-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(116, 185, 255, 0.5);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 12px;
+  width: 280px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.endpoint-input:focus {
+  border-color: #74b9ff;
+  box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.2);
+}
+
+.endpoint-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Error Message */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 71, 87, 0.15);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 6px;
+  color: #ff6b7a;
+  font-size: 12px;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+}
+
+.error-icon {
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .connection-status-container {
+    padding: 10px 15px;
+  }
+
+  .endpoint-display,
+  .endpoint-edit {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .endpoint-input {
+    flex: 1;
+  }
+}
